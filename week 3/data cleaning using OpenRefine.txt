@@ -1,0 +1,13 @@
+## OpenRefine
+### Increase java heap size
+open this file: `openrefine.l4j.ini`
+
+Find the line that starts with -Xmx (which is Java speak for "maximum heap size"), which will show the default allocated memory: 1024M (meaning 1024 MB or 1 GB). Increase this as you see fit, for instance to 2048 M. The new settings will be in effect the next time you start OpenRefine.
+
+### Assignment
+1. Select the **category_name** column and choose **Facet by Blank** (Facet ->Customized Facets ->Facet+ by blank) to filter out the records that have blank values in this column. Provide the number of rows that return True. Remove these rows.
+2. Split the column **category_name** into multiple columns without removing the original column. For example, a row with **Kids/Toys/Dolls & Accessories** in the **category_name** column would be split across the newly created columns as ‘Kids’, ‘Toys’, and ‘Dolls & Accessories’. Use the existing functionality in OpenRefine that creates multiple columns from an existing column based on a separator (i.e. in this case ‘/’). Provide the number of columns that are created in this operation. Remove the newly created columns that do not have values in all rows.
+3. Select the column **name** and apply the **Text Facet** (Facet -> Text Facet). Click on the cluster button which opens a window where you can choose different ‘methods’ and ‘keying functions’ to use while clustering. Choose the keying function that produces the highest number of clusters under the **Key Collision** method. Provide the number of clusters found using this keying function. Click on ‘**Select All**’ and ‘**Merge Selected & Close**’.
+4. Replace the null values in the **brand_name** column with the text ‘Unbranded’ (Edit Cells->Transform). Provide the General Refine Evaluation Language (GREL) expression used.
+5. Create a new column **high_priced** with the values 0 or 1 based on the ‘price’ column with the following conditions: If the price is greater than 100, **high_priced** should be set as 1, else 0. Provide the GREL expression used to perform this.
+6. Create a new column **has_offer** with the values 0 or 1 based on the **item_description** column with the following conditions: If it contains the text ‘discount’, or ‘offer’, or ‘sale’, then set the value in **has_offer** as 1, else 0. Provide the GREL expression used to perform this.
